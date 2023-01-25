@@ -339,7 +339,10 @@ def make_project_structure(PROJECT_NAME):
         create_file("predictor")
         create_file("utils")
 
-        os.chdir(path+"\components")
+        try:
+            os.chdir(path+"\components")
+        except Exception as e:
+            os.chdir(path+"/components")
         create_file("__init__")
         create_file("data_ingestion")
         create_file("data_transformation")
@@ -347,13 +350,19 @@ def make_project_structure(PROJECT_NAME):
         create_file("model_evaluation")
         create_file("model_pusher")
         create_file("model_trainer")
-
-        os.chdir(path+"\pipeline")
+        
+        try:
+            os.chdir(path+"\pipeline")
+        except Exception as e:
+            os.chdir(path+"/pipeline")
         create_file("__init__")
         create_file("artifact_entity")
         create_file("config_entity")
 
-        os.chdir(path+"\entity")
+        try:
+            os.chdir(path+"\entity")
+        except Exception as e:
+            os.chdir(path+"/entity")
         create_file("__init__")
         create_file("batch_prediction")
         create_file("training_pipeline")
